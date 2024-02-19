@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
         seat.addEventListener("click", function() {
             const seatId = seat.textContent;
             if (selectedSeats.includes(seatId)) {
-                // Deselect the seat
+                //  the seat
                 selectedSeats = selectedSeats.filter(id => id !== seatId);
                 seat.classList.remove("kbd-selected");
             } else {
@@ -33,10 +33,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             }
 
-            // Update seat number
+            //  seat number
             seatNumberElement.textContent = selectedSeats.length;
 
-            // Update selected tickets
+            //  selected tickets
             selectedTicketsElement.innerHTML = "";
             selectedSeats.forEach(id => {
                 const seatElement = document.createElement("div");
@@ -44,17 +44,47 @@ document.addEventListener("DOMContentLoaded", function() {
                 selectedTicketsElement.appendChild(seatElement);
             });
 
-            // Update total price
+            // total price
             const totalPrice = selectedSeats.length * seatPrice;
             totalPriceElement.innerHTML = `<div><p>Total Price</p></div><div><p>BDT ${totalPrice}</p></div>`;
-            // update grand price
+            //  grand price
             const grandTotal = selectedSeats.length * seatPrice;
 
             grandTotalElement.innerHTML =`<div><p>grand Total</p></div><div><p>BDT ${grandTotal}</p></div>`;
 
-            // Update remaining seats
+            //  remaining seats
             const remainingSeats = 40 - selectedSeats.length;
             allSeatsElement.textContent = `${remainingSeats} Seats left`;
         });
     });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const grandTotalElement = document.getElementById("grandTotalAmount");
+    const applyCouponButton = document.getElementById("applyCouponButton");
+
+    //  calculate discounted price
+    function calculateDiscountedPrice(basePrice, discountPercentage) {
+        return basePrice * (1 - discountPercentage / 100);
+    }
+
+    //  applying coupon
+    applyCouponButton.addEventListener("click", function () {
+        const couponCode = document.getElementById("couponCodeInput").value.trim();
+
+        // Check which coupon is applied 
+        let discountedPrice;
+        if (couponCode.toUpperCase() === "NEW 15") {
+            discountedPrice = calculateDiscountedPrice(1100, 15);
+        } else if (couponCode.toUpperCase() === "COUPLE 20") {
+            discountedPrice = calculateDiscountedPrice(1100, 20);
+        } else {
+            alert("Invalid coupon code.");
+            return;
+        }
+
+        //  grand total with discounted price
+        grandTotalElement.textContent = `BDT ${discountedPrice.toFixed(2)}`;
+    });
+});
+
