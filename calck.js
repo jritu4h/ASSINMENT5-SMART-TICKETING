@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const selectedTicketsElement = document.getElementById("selectedtickets");
     const allSeatsElement = document.getElementById("allseat");
     const totalPriceElement = document.getElementById("totalpeice");
+    const grandTotalElement = document.getElementById("grandtotal")
     const seatPrice = 550; // Price per seat
     const maxSeats = 4; // Maximum number of seats that can be selected
 
@@ -46,6 +47,10 @@ document.addEventListener("DOMContentLoaded", function() {
             // Update total price
             const totalPrice = selectedSeats.length * seatPrice;
             totalPriceElement.innerHTML = `<div><p>Total Price</p></div><div><p>BDT ${totalPrice}</p></div>`;
+            // update grand price
+            const grandTotal = selectedSeats.length * seatPrice;
+
+            grandTotalElement.innerHTML =`<div><p>grand Total</p></div><div><p>BDT ${grandTotal}</p></div>`;
 
             // Update remaining seats
             const remainingSeats = 40 - selectedSeats.length;
