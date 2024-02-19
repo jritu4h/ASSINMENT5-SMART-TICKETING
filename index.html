@@ -72,7 +72,7 @@
                         <h2 class="text-4xl text-[#00ff40] mb-5 font-bold">P-Paribahon</h2>
                         <p class="mb-5">If you want to visit any places in Bangladesh.Please check our website or
                             contact with us.we will help you <br> at that time.Please stay with us.Happy travel.</p>
-                        <button class="btn bg-[#00ff40]">Buy Tickets</button>
+                        <button id="buy_tickets_btn" class="btn bg-[#00ff40]">Buy Tickets</button>
                     </div>
                 </div>
             </div>
@@ -90,7 +90,7 @@
                 <div class="">
                     <div class="  grid grid-cols-3  bg-[#ffbf00] h-56 max-w-2xl rounded-lg ">
                         <div class="p-10">
-                            <h3>15% OFF</h3>
+                            <h3 class="text-2xl font-extrabold">15% OFF</h3>
                             <h5>on your next purchase</h5>
                             <p>use by january 2024</p>
 
@@ -101,7 +101,7 @@
 
                         </div>
                         <div class="p-10">
-                            <h3>NEW <sub class="text-2xl">1</sub> 5</h3>
+                            <h3 class="text-2xl font-extrabold">NEW <sub class="text-2xl">15</sub> </h3>
                             <p class="pt-4">Coupon Code</p>
                         </div>
 
@@ -111,7 +111,7 @@
                 </div>
                 <div class=" grid grid-cols-3 bg-[#ff8080] h-56 max-w-2xl rounded-lg">
                     <div class="p-10">
-                        <h3>20% OFF</h3>
+                        <h3 class="text-2xl font-extrabold">20% OFF</h3>
                         <h5>on your next purchase</h5>
                         <p>use by january 2024</p>
 
@@ -123,7 +123,7 @@
 
                     </div>
                     <div class="p-10">
-                        <h3>Couple 20</h3>
+                        <h3 class="text-2xl">Couple 20</h3>
                         <p>Coupon Code</p>
 
                     </div>
@@ -133,7 +133,8 @@
                 <button class="btn btn-wide text-[#00ff40] ">See All offer</button>
             </div>
         </section>
-        <section class="">
+        <!-- this is ph. paribahan -->
+        <section id="ph_paribahan" class="pt-1">
 
             <div class="text-center ">
                 <h1 class="text-4xl font-bold">P.H Paribahan</h1>
@@ -148,7 +149,7 @@
                         <div class="flex">
                             <div> <img src="images/bus-logo.png" alt=""></div>
                             <div>
-                                <h3 class="text-xl">Greenline Paribahan</h3>
+                                <h3 class="text-2xl font-extrabold">Greenline Paribahan</h3>
                                 <p class="pt-2">Coach-009-WEB ! AC_Business</p>
                             </div>
                         </div>
@@ -156,7 +157,7 @@
                             <div><img src="images/ticket-cupon.png" alt=""></div>
                             <div class="">
                                 <h4 class="text-white">-------</h4>
-                                <p class=" text-[#00ff40] rounded">40 Seats left</p>
+                                <p id="allseat" class=" text-[#00ff40] rounded">40 Seats left</p>
                             </div>
                         </div>
                     </div>
@@ -217,17 +218,12 @@
                     </div>
                     <div class="p-32">
                         <img src="images/fare.png" alt="">
-                        <h3>550 Taka</h3>
+                        <h3 class="text-2xl">550 Taka</h3>
                         <p> Per Seat</p>
                     </div>
                 </div>
             </div>
-
-
-
-        </section>
-        <section class="pt-10">
-            <div class="grid grid-cols-2">
+            <div class="grid grid-cols-2 pt-10">
                 <div>
                     <div>
                         <p>Select Your Seat</p>
@@ -486,7 +482,7 @@
                                     <p>Seat</p>
                                 </div>
                                 <div>
-                                    <p class="bg-[#00ff40] text-white rounded">2</p>
+                                    <p id="seatnumber" class="bg-[#00ff40] text-white rounded">2</p>
                                 </div>
                             </div>
                             <div>
@@ -499,7 +495,7 @@
                         </div>
                         <div class="divider divider-start pt-3"></div>
                         <div class="grid grid-cols-3">
-                            <div class="flex">
+                            <div id="selectedtickets" class="flex">
                                 <div>
                                     <p>C</p>
                                 </div>
@@ -516,7 +512,7 @@
 
                         </div>
                         <div class="grid grid-cols-3 pt-3">
-                            <div class="flex">
+                            <div id="selectedtickets" class="flex">
                                 <div>
                                     <p>C</p>
                                 </div>
@@ -535,7 +531,7 @@
 
                         <div class="divider divider-start pt-3"></div>
 
-                        <div class="grid grid-cols-2 gap-60">
+                        <div id="totalpeice" class="grid grid-cols-2 gap-60">
                             <div>
                                 <p>Total Price</p>
                             </div>
@@ -568,7 +564,7 @@
                         </div>
                         <div>
 
-                            
+
                             <div>
                                 <div class="pt-3">
                                     <p>Passenger Name*</p>
@@ -607,11 +603,11 @@
                                 <div>
                                     <p>Terms and Conditions</p>
                                 </div>
-                                
+
                                 <div>
                                     <p>Cancellation Policy</p>
                                 </div>
-                                
+
                             </div>
 
                         </div>
@@ -621,6 +617,7 @@
 
     </main>
     <footer></footer>
+    <script src="calck.js"></script>
 
 </body>
 
