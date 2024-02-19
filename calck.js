@@ -83,8 +83,18 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        //  grand total with discounted price
+        //  grand total and discounted price
         grandTotalElement.textContent = `BDT ${discountedPrice.toFixed(2)}`;
     });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    const button = document.getElementById("button");
+    const successMessage = document.getElementById("successMessage");
+
+    //  Next button
+    button.addEventListener("click", function () {
+        //  success message
+        successMessage.classList.toggle("hidden");
+    });
+});
