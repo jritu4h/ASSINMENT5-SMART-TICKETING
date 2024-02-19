@@ -5,37 +5,51 @@ document.getElementById('buy_tickets_btn').addEventListener('click', function ()
 
 
 document.addEventListener("DOMContentLoaded", function() {
-    const seats = document.querySelectorAll('.kbd');
-    const seatNumberDisplay = document.getElementById('seatnumber');
-    const totalSeatsDisplay = document.getElementById('allseat');
-    const totalPriceDisplay = document.getElementById('totalpeice').getElementsByTagName('p')[1];
-    
+    const seats = document.querySelectorAll(".kbd");
+    const seatNumberElement = document.getElementById("seatnumber");
+    const selectedTicketsElement = document.getElementById("selectedtickets");
+    const allSeatsElement = document.getElementById("allseat");
+    const totalPriceElement = document.getElementById("totalpeice");
+    const seatPrice = 550; // Price per seat
+    const maxSeats = 4; // Maximum number of seats that can be selected
+
     let selectedSeats = [];
-    
+
     seats.forEach(seat => {
-        seat.addEventListener('click', function() {
-            if (selectedSeats.length < 4 || selectedSeats.includes(seat)) {
-                if (!selectedSeats.includes(seat)) {
-                    seat.classList.add('kbd-selected');
-                    selectedSeats.push(seat);
+        seat.addEventListener("click", function() {
+            const seatId = seat.textContent;
+            if (selectedSeats.includes(seatId)) {
+                // Deselect the seat
+                selectedSeats = selectedSeats.filter(id => id !== seatId);
+                seat.classList.remove("kbd-selected");
+            } else {
+                // Select the seat
+                if (selectedSeats.length < maxSeats) {
+                    selectedSeats.push(seatId);
+                    seat.classList.add("kbd-selected");
                 } else {
-                    seat.classList.remove('kbd-selected');
-                    selectedSeats = selectedSeats.filter(selectedSeat => selectedSeat !== seat);
+                    alert("You can only select up to 4 seats.");
                 }
-                
-                // Update seat number display
-                const seatNumbers = selectedSeats.map(selectedSeat => selectedSeat.textContent).join(', ');
-                seatNumberDisplay.textContent = seatNumbers;
-                
-                // Update total seats display
-                const seatsLeft = 40 - selectedSeats.length;
-                totalSeatsDisplay.textContent = seatsLeft + " Seats left";
-                
-                // Update total price display
-                const totalPrice = selectedSeats.length * 550;
-                totalPriceDisplay.textContent = "BDT " + totalPrice;
             }
+
+            // Update seat number
+            seatNumberElement.textContent = selectedSeats.length;
+
+            // Update selected tickets
+            selectedTicketsElement.innerHTML = "";
+            selectedSeats.forEach(id => {
+                const seatElement = document.createElement("div");
+                seatElement.innerHTML = `<div><p>${id}</p></div>`;
+                selectedTicketsElement.appendChild(seatElement);
+            });
+
+            // Update total price
+            const totalPrice = selectedSeats.length * seatPrice;
+            totalPriceElement.innerHTML = `<div><p>Total Price</p></div><div><p>BDT ${totalPrice}</p></div>`;
+
+            // Update remaining seats
+            const remainingSeats = 40 - selectedSeats.length;
+            allSeatsElement.textContent = `${remainingSeats} Seats left`;
         });
     });
 });
-
